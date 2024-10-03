@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="Proyecto302.css">
+    <title>Registro de datos</title>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Registro de datos</h1>
+        <form id="formulario">
+            <input type="text" id="noprueba" placeholder="Numero de prueba" required>
+            <input type="text" id="tiempo" placeholder="Tiempo (s)" required>
+            <input type="text" id="altura" placeholder="Altura (m)" required>
+            <button type="button" onclick="agregarFila()">Registrar</button>
+        </form>
+
+        <table id="tablaDatos">
+            <thead>
+                <tr>
+                    <th>Numero de prueba</th>
+                    <th>Tiempo (s)</th>
+                    <th>Altura (m)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Las filas se agregarán aquí -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function agregarFila() {
+            // jala los valores de los campos de texto
+            let noprueba = document.getElementById("noprueba").value;
+            let tiempo = document.getElementById("tiempo").value;
+            let altura = document.getElementById("altura").value;
+
+            // para ver que se llenen los campos
+            if (noprueba !== "" && tiempo !== "" && altura !== "") {
+                // Obtener la tabla
+                let tabla = document.getElementById("tablaDatos").getElementsByTagName("tbody")[0];
+
+                // Crear una nueva fila
+                let nuevaFila = tabla.insertRow();
+
+                // Insertar celdas en la fila
+                let celdaNoprueba = nuevaFila.insertCell(0);
+                let celdaTiempo = nuevaFila.insertCell(1);
+                let celdaAltura = nuevaFila.insertCell(2);
+
+                // pega valores a la celda
+                celdaNoprueba.innerHTML = noprueba;
+                celdaTiempo.innerHTML = tiempo;
+                celdaAltura.innerHTML = altura;
+
+                
+            } else {
+                alert("Rellena todos los datos :D");
+            }
+        }
+    </script>
+
+</body>
+</html>
+
